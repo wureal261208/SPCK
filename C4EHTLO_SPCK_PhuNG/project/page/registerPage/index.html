@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <section
+        class="registerPage bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800 min-h-screen">
+        <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
+            <!-- Login Card -->
+            <div
+                class="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
+                <div class="p-8 space-y-6 md:space-y-8 sm:p-10">
+                    <div>
+                        <a href="#"
+                            class="flex items-center text-3xl font-bold text-gray-900 dark:text-white hover:text-indigo-600 transition duration-300">
+                            <img class="w-12 h-12 mr-3" src="/project/img/logo.jpg" alt="logo">
+                            <span>BookWorm</span>
+                        </a>
+                        <p class="text-center mt-2 text-gray-600 dark:text-gray-300 text-lg">Welcome back to your
+                            reading space</p>
+                    </div>
+                    <form class="space-y-5 md:space-y-6" action="#">
+                        <!-- Email Input -->
+                        <div>
+                            <label for="email"
+                                class="block mb-3 text-base font-semibold text-gray-900 dark:text-white">Email
+                                Address</label>
+                            <input type="email" name="email" id="email"
+                                class="bg-gray-50 border-2 border-gray-300 text-gray-900 text-lg rounded-lg focus:ring-2 focus:ring-indigo-600 focus:border-indigo-600 block w-full p-3.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-indigo-500 dark:focus:border-indigo-500 transition duration-200"
+                                placeholder="Enter your email" required="">
+                        </div>
+
+                        <!-- Password Input -->
+                        <div>
+                            <label for="password"
+                                class="block mb-3 text-base font-semibold text-gray-900 dark:text-white">Password</label>
+                            <input type="password" name="password" id="password" placeholder="Enter your password"
+                                class="bg-gray-50 border-2 border-gray-300 text-gray-900 text-lg rounded-lg focus:ring-2 focus:ring-indigo-600 focus:border-indigo-600 block w-full p-3.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-indigo-500 dark:focus:border-indigo-500 transition duration-200"
+                                required="">
+                        </div>
+                        <!-- Confirm Password Input -->
+                        <div>
+                            <label for="confirmPassword"
+                                class="block mb-3 text-base font-semibold text-gray-900 dark:text-white">Confirm Password</label>
+                            <input type="password" name="confirmPassword" id="confirmPassword" placeholder="Confirm your password"
+                                class="bg-gray-50 border-2 border-gray-300 text-gray-900 text-lg rounded-lg focus:ring-2 focus:ring-indigo-600 focus:border-indigo-600 block w-full p-3.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-indigo-500 dark:focus:border-indigo-500 transition duration-200"
+                                required="">
+                        </div>
+                        <!-- Sign In Button -->
+                        <button type="submit"
+                            class="w-full text-white bg-gradient-to-r from-indigo-600 to-blue-600 hover:from-indigo-700 hover:to-blue-700 focus:ring-4 focus:outline-none focus:ring-indigo-300 font-bold rounded-lg text-lg px-5 py-3.5 text-center dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:focus:ring-indigo-800 transition duration-200 shadow-lg hover:shadow-xl">
+                            Register
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>

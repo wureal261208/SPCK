@@ -1,0 +1,859 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BookWorm - Your Ultimate Book Store</title>
+    <!-- Library CSS and JS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- Boxicons CSS -->
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body class="bg-gradient-to-b from-gray-50 to-gray-100">
+    <!-- Search Input -->
+    <form class="max-w-5xl mx-auto mt-32 mb-16">
+      <div class="flex shadow-2xl rounded-full -space-x-0.5">
+        <label
+          for="search-dropdown"
+          class="block mb-2.5 text-lg font-bold text-heading sr-only"
+          >Your Email</label
+        >
+        <button
+          id="dropdown-button"
+          data-dropdown-toggle="dropdown"
+          type="button"
+          class="inline-flex items-center shrink-0 z-10 text-white bg-gradient-to-r from-purple-600 to-blue-600 box-border border-2 border-purple-500 hover:from-purple-700 hover:to-blue-700 focus:ring-4 focus:ring-purple-400 font-bold leading-6 rounded-s-full text-lg px-6 py-4 focus:outline-none transition-all"
+        >
+          <i class="bx bx-menu me-2 text-2xl"></i>
+          All categories
+          <i class="bx bx-chevron-down ms-2 text-2xl"></i>
+        </button>
+        <div
+          id="dropdown"
+          class="z-10 hidden bg-gradient-to-br from-gray-900 to-gray-800 border-2 border-purple-500 rounded-lg shadow-2xl w-56"
+        >
+          <ul
+            class="p-3 text-base text-white font-bold"
+            aria-labelledby="dropdown-button"
+          >
+            <li>
+              <a
+                href="#"
+                class="flex items-center block p-3 hover:bg-purple-600 hover:text-yellow-300 rounded-lg transition-colors"
+                ><i class="bx bx-shopping-bag me-2"></i>Books</a
+              >
+            </li>
+            <li>
+              <a
+                href="#"
+                class="flex items-center block p-3 hover:bg-purple-600 hover:text-yellow-300 rounded-lg transition-colors"
+                ><i class="bx bx-image me-2"></i>Comics</a
+              >
+            </li>
+            <li>
+              <a
+                href="#"
+                class="flex items-center block p-3 hover:bg-purple-600 hover:text-yellow-300 rounded-lg transition-colors"
+                ><i class="bx bx-news me-2"></i>Magazines</a
+              >
+            </li>
+            <li>
+              <a
+                href="#"
+                class="flex items-center block p-3 hover:bg-purple-600 hover:text-yellow-300 rounded-lg transition-colors"
+                ><i class="bx bx-wallet me-2"></i>Special Editions</a
+              >
+            </li>
+          </ul>
+        </div>
+        <input
+          type="search"
+          id="search-dropdown"
+          id="input-group-1"
+          class="px-6 py-4 bg-white border-0 text-gray-900 text-lg font-semibold focus:ring-2 focus:ring-purple-500 focus:outline-none block w-full placeholder:text-gray-500"
+          placeholder="Search for your favorite books..."
+          required
+        />
+        <button
+          type="button"
+          class="inline-flex items-center text-white bg-gradient-to-r from-pink-600 to-red-600 hover:from-pink-700 hover:to-red-700 box-border border-2 border-red-500 focus:ring-4 focus:ring-red-400 font-bold leading-6 rounded-e-full text-lg px-6 py-4 focus:outline-none transition-all shadow-lg"
+        >
+          <i class="bx bx-search-alt-2 text-2xl me-2"></i>
+          Search
+        </button>
+      </div>
+    </form>
+
+    <nav
+      class="navbar bg-gradient-to-r from-purple-600 via-blue-600 to-cyan-500 dark:from-gray-800 dark:via-gray-700 dark:to-gray-800 fixed w-full z-20 top-0 start-0 border-b-4 border-purple-800 dark:border-purple-600 shadow-2xl transition-all duration-300"
+    >
+      <div
+        class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto px-6 py-3"
+      >
+        <!-- Logo Section -->
+        <a
+          href="#"
+          class="flex items-center space-x-3 rtl:space-x-reverse group"
+        >
+          <img
+            src="/project/img/logo.jpg"
+            class="h-12 group-hover:scale-110 transition-transform duration-300"
+            alt="BookWorm Logo"
+          />
+          <span
+            class="self-center text-3xl text-white font-black whitespace-nowrap drop-shadow-lg group-hover:text-yellow-200 transition-colors duration-300"
+            >BookWorm</span
+          >
+        </a>
+
+        <!-- Mobile Menu Button -->
+        <button
+          data-collapse-toggle="navbar-menu"
+          type="button"
+          class="inline-flex items-center p-2 w-10 h-10 justify-center text-white rounded-lg md:hidden hover:bg-blue-700/50 hover:text-yellow-300 focus:outline-none focus:ring-2 focus:ring-purple-400 transition-all duration-300"
+          aria-controls="navbar-menu"
+          aria-expanded="false"
+        >
+          <span class="sr-only">Open main menu</span>
+          <i class="bx bx-menu text-2xl"></i>
+        </button>
+
+        <!-- Center Navigation -->
+        <div
+          class="items-center justify-center hidden w-full md:flex md:w-auto"
+          id="navbar-menu"
+        >
+          <ul
+            class="font-bold flex flex-col p-4 md:p-0 mt-4 border-2 border-white rounded-xl bg-gray-900/95 md:flex-row md:space-x-1 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-transparent md:backdrop-blur-0"
+          >
+            <li>
+              <a
+                href="#"
+                class="block py-2 px-4 text-white rounded-lg md:text-yellow-300 hover:bg-purple-600/50 md:hover:bg-transparent md:hover:text-yellow-200 md:hover:scale-110 transition-all duration-300 text-base flex items-center font-semibold"
+                aria-current="page"
+                ><i class="bx bx-home me-2 text-lg"></i>Home</a
+              >
+            </li>
+            <li>
+              <a
+                href="#"
+                class="block py-2 px-4 text-white rounded-lg hover:bg-purple-600/50 md:hover:bg-transparent md:hover:text-cyan-300 md:hover:scale-110 transition-all duration-300 text-base flex items-center font-semibold"
+                ><i class="bx bx-info-circle me-2 text-lg"></i>About</a
+              >
+            </li>
+            <li>
+              <a
+                href="#"
+                class="block py-2 px-4 text-white rounded-lg hover:bg-blue-600/50 md:hover:bg-transparent md:hover:text-cyan-300 md:hover:scale-110 transition-all duration-300 text-base flex items-center font-semibold"
+                ><i class="bx bx-cog me-2 text-lg"></i>Services</a
+              >
+            </li>
+            <li>
+              <a
+                href="#"
+                class="block py-2 px-4 text-white rounded-lg hover:bg-green-600/50 md:hover:bg-transparent md:hover:text-cyan-300 md:hover:scale-110 transition-all duration-300 text-base flex items-center font-semibold"
+                ><i class="bx bx-dollar me-2 text-lg"></i>Pricing</a
+              >
+            </li>
+            <li>
+              <a
+                href="#"
+                class="block py-2 px-4 text-white rounded-lg hover:bg-pink-600/50 md:hover:bg-transparent md:hover:text-cyan-300 md:hover:scale-110 transition-all duration-300 text-base flex items-center font-semibold"
+                ><i class="bx bx-phone me-2 text-lg"></i>Contact</a
+              >
+            </li>
+          </ul>
+        </div>
+
+        <!-- Right Section: User, Dark Mode, Cart -->
+        <div
+          class="flex items-center space-x-4 md:space-x-5"
+        >
+          <!-- User Menu -->
+          <button
+            type="button"
+            class="flex text-white text-2xl hover:text-yellow-300 hover:scale-125 transition-all duration-300 hover:drop-shadow-lg"
+            id="user-menu-button"
+            aria-expanded="false"
+            data-dropdown-toggle="user-dropdown"
+            data-dropdown-placement="bottom"
+          >
+            <i class="bx bx-user-circle"></i>
+          </button>
+          <!-- User Dropdown menu -->
+          <div
+            class="z-50 hidden bg-gradient-to-br from-gray-900 to-gray-800 dark:from-gray-950 dark:to-gray-900 border-2 border-purple-500 rounded-xl shadow-2xl w-56"
+            id="user-dropdown"
+          >
+            <div
+              class="px-4 py-4 text-base border-b border-purple-600 bg-gradient-to-r from-purple-600 to-blue-600 rounded-t-lg"
+            >
+              <span class="block text-white font-bold text-lg flex items-center"
+                ><i class="bx bx-user me-2"></i>Joseph McFall</span
+              >
+              <span class="block text-gray-200 truncate text-sm"
+                >name@flowbite.com</span
+              >
+            </div>
+            <ul
+              class="p-3 text-base text-gray-200 font-medium"
+              aria-labelledby="user-menu-button"
+            >
+              <li>
+                <a
+                  href="#"
+                  class="inline-flex items-center w-full p-3 hover:bg-purple-600 hover:text-white rounded-lg transition-colors"
+                  ><i class="bx bx-grid-alt me-2"></i>Dashboard</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="inline-flex items-center w-full p-3 hover:bg-purple-600 hover:text-white rounded-lg transition-colors"
+                  ><i class="bx bx-cog me-2"></i>Settings</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="inline-flex items-center w-full p-3 hover:bg-purple-600 hover:text-white rounded-lg transition-colors"
+                  ><i class="bx bx-money me-2"></i>Earnings</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="inline-flex items-center w-full p-3 hover:bg-red-600 hover:text-white rounded-lg transition-colors"
+                  ><i class="bx bx-log-out me-2"></i>Sign out</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- Dark Mode Toggle -->
+          <button
+            id="dark-mode-btn"
+            class="flex text-white text-2xl hover:text-yellow-300 hover:scale-125 transition-all duration-300 hover:drop-shadow-lg"
+          >
+            <i class="bx bx-moon"></i>
+          </button>
+
+          <!-- Cart Button -->
+          <div class="relative hidden md:block">
+            <button
+              id="cart-btn"
+              class="relative flex items-center text-white text-2xl hover:text-yellow-300 hover:scale-125 transition-all duration-300 hover:drop-shadow-lg"
+            >
+              <i class="bx bx-cart"></i>
+              <span
+                id="cart-badge"
+                class="absolute -top-2 -right-3 bg-red-600 text-white text-xs font-bold rounded-full w-6 h-6 flex items-center justify-center shadow-lg"
+                >0</span
+              >
+            </button>
+            <!-- Cart Dropdown -->
+            <div
+              id="cart-dropdown"
+              class="hidden absolute right-0 mt-2 w-80 bg-white dark:bg-gray-900 rounded-xl shadow-2xl border-2 border-purple-300 dark:border-purple-600 p-4 z-50"
+            >
+              <h3
+                class="text-xl font-bold text-gray-900 dark:text-white mb-4 flex items-center"
+              >
+                <i class="bx bx-cart-alt me-2"></i>Shopping Cart
+              </h3>
+              <div
+                id="cart-items"
+                class="space-y-3 mb-4 max-h-64 overflow-y-auto"
+              >
+                <p class="text-gray-500 dark:text-gray-400 text-center py-6">
+                  Your cart is empty
+                </p>
+              </div>
+              <div class="border-t border-gray-300 dark:border-gray-600 pt-3">
+                <p class="text-lg font-bold text-gray-900 dark:text-white mb-3">
+                  Total: $<span id="cart-total">0</span>
+                </p>
+                <button
+                  class="w-full bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white font-bold py-2 rounded-lg transition-all"
+                >
+                  Checkout
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Cards -->
+    <div
+      class="mt-20 p-8 grid gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 bg-gradient-to-b from-gray-100 to-white"
+    >
+      <div
+        class="w-full max-w-sm bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-gray-800 dark:to-gray-900 p-6 border-2 border-blue-300 dark:border-blue-600 rounded-2xl shadow-2xl hover:shadow-3xl transform hover:-translate-y-2 transition-all duration-300"
+        data-product="Apple Watch Series 7"
+        data-price="599"
+      >
+        <a href="#">
+          <img
+            class="rounded-xl mb-6 hover:scale-105 transition-transform"
+            src="/docs/images/products/apple-watch.png"
+            alt="product image"
+          />
+        </a>
+        <div>
+          <div class="flex items-center space-x-3 mb-6">
+            <div class="flex items-center space-x-1 rtl:space-x-reverse">
+              <i class="bx bx-star text-lg text-yellow-500"></i>
+              <i class="bx bx-star text-lg text-yellow-500"></i>
+              <i class="bx bx-star text-lg text-yellow-500"></i>
+              <i class="bx bx-star text-lg text-yellow-500"></i>
+              <i class="bx bx-star text-lg text-yellow-500"></i>
+            </div>
+            <span
+              class="bg-gradient-to-r from-yellow-400 to-orange-400 border-2 border-orange-600 text-white text-base font-bold px-3 py-1.5 rounded-full shadow-lg"
+              ><i class="bx bx-star me-1"></i>4.8/5</span
+            >
+          </div>
+          <a href="#">
+            <h5
+              class="text-2xl text-heading dark:text-white font-bold tracking-tight flex items-center"
+            >
+              <i class="bx bx-watch me-3 text-3xl text-blue-600"></i>Apple Watch
+              Series 7
+            </h5>
+          </a>
+          <div class="flex items-center justify-between mt-8 gap-3">
+            <span
+              class="text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600"
+              >$599</span
+            >
+            <button
+              type="button"
+              class="add-to-cart-btn text-white bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 focus:ring-4 focus:outline-none focus:ring-green-400 font-bold rounded-xl text-base px-5 py-3 text-center transition duration-200 shadow-xl hover:shadow-2xl transform hover:scale-105 flex items-center"
+            >
+              <i class="bx bx-cart-add me-2 text-xl"></i>
+              Add
+            </button>
+            <button
+              type="button"
+              class="text-white bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 focus:ring-4 focus:outline-none focus:ring-blue-400 font-bold rounded-xl text-base px-5 py-3 text-center transition duration-200 shadow-xl hover:shadow-2xl transform hover:scale-105 flex items-center"
+            >
+              <i class="bx bx-eye me-2 text-xl"></i>
+              View
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="w-full max-w-sm bg-gradient-to-br from-purple-50 to-pink-50 p-6 border-2 border-purple-300 rounded-2xl shadow-2xl hover:shadow-3xl transform hover:-translate-y-2 transition-all duration-300"
+      >
+        <a href="#">
+          <img
+            class="rounded-xl mb-6 hover:scale-105 transition-transform"
+            src="/docs/images/products/apple-watch.png"
+            alt="product image"
+          />
+        </a>
+        <div>
+          <div class="flex items-center space-x-3 mb-6">
+            <div class="flex items-center space-x-1 rtl:space-x-reverse">
+              <i class="bx bx-star text-lg text-yellow-500"></i>
+              <i class="bx bx-star text-lg text-yellow-500"></i>
+              <i class="bx bx-star text-lg text-yellow-500"></i>
+              <i class="bx bx-star text-lg text-yellow-500"></i>
+              <i class="bx bx-star-half text-lg text-yellow-500"></i>
+            </div>
+            <span
+              class="bg-gradient-to-r from-yellow-400 to-orange-400 border-2 border-orange-600 text-white text-base font-bold px-3 py-1.5 rounded-full shadow-lg"
+              ><i class="bx bx-star me-1"></i>4.5/5</span
+            >
+          </div>
+          <a href="#">
+            <h5
+              class="text-2xl text-heading font-bold tracking-tight flex items-center"
+            >
+              <i class="bx bx-book me-3 text-3xl text-purple-600"></i>Classic
+              Literature
+            </h5>
+          </a>
+          <div class="flex items-center justify-between mt-8 gap-3">
+            <span
+              class="text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600"
+              >$29</span
+            >
+            <button
+              type="button"
+              class="text-white bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 focus:ring-4 focus:outline-none focus:ring-green-400 font-bold rounded-xl text-base px-5 py-3 text-center transition duration-200 shadow-xl hover:shadow-2xl transform hover:scale-105 flex items-center"
+            >
+              <i class="bx bx-cart-add me-2 text-xl"></i>
+              Add
+            </button>
+            <button
+              type="button"
+              class="text-white bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 focus:ring-4 focus:outline-none focus:ring-blue-400 font-bold rounded-xl text-base px-5 py-3 text-center transition duration-200 shadow-xl hover:shadow-2xl transform hover:scale-105 flex items-center"
+            >
+              <i class="bx bx-eye me-2 text-xl"></i>
+              View
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="w-full max-w-sm bg-gradient-to-br from-orange-50 to-red-50 p-6 border-2 border-orange-300 rounded-2xl shadow-2xl hover:shadow-3xl transform hover:-translate-y-2 transition-all duration-300"
+      >
+        <a href="#">
+          <img
+            class="rounded-xl mb-6 hover:scale-105 transition-transform"
+            src="/docs/images/products/apple-watch.png"
+            alt="product image"
+          />
+        </a>
+        <div>
+          <div class="flex items-center space-x-3 mb-6">
+            <div class="flex items-center space-x-1 rtl:space-x-reverse">
+              <i class="bx bx-star text-lg text-yellow-500"></i>
+              <i class="bx bx-star text-lg text-yellow-500"></i>
+              <i class="bx bx-star text-lg text-yellow-500"></i>
+              <i class="bx bx-star text-lg text-yellow-500"></i>
+              <i class="bx bx-star text-lg text-yellow-500"></i>
+            </div>
+            <span
+              class="bg-gradient-to-r from-yellow-400 to-orange-400 border-2 border-orange-600 text-white text-base font-bold px-3 py-1.5 rounded-full shadow-lg"
+              ><i class="bx bx-star me-1"></i>5.0/5</span
+            >
+          </div>
+          <a href="#">
+            <h5
+              class="text-2xl text-heading font-bold tracking-tight flex items-center"
+            >
+              <i class="bx bx-rocket me-3 text-3xl text-orange-600"></i>Sci-Fi
+              Adventure
+            </h5>
+          </a>
+          <div class="flex items-center justify-between mt-8 gap-3">
+            <span
+              class="text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-red-600 to-orange-600"
+              >$39</span
+            >
+            <button
+              type="button"
+              class="text-white bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 focus:ring-4 focus:outline-none focus:ring-green-400 font-bold rounded-xl text-base px-5 py-3 text-center transition duration-200 shadow-xl hover:shadow-2xl transform hover:scale-105 flex items-center"
+            >
+              <i class="bx bx-cart-add me-2 text-xl"></i>
+              Add
+            </button>
+            <button
+              type="button"
+              class="text-white bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 focus:ring-4 focus:outline-none focus:ring-blue-400 font-bold rounded-xl text-base px-5 py-3 text-center transition duration-200 shadow-xl hover:shadow-2xl transform hover:scale-105 flex items-center"
+            >
+              <i class="bx bx-eye me-2 text-xl"></i>
+              View
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="w-full max-w-sm bg-gradient-to-br from-green-50 to-teal-50 p-6 border-2 border-green-300 rounded-2xl shadow-2xl hover:shadow-3xl transform hover:-translate-y-2 transition-all duration-300"
+      >
+        <a href="#">
+          <img
+            class="rounded-xl mb-6 hover:scale-105 transition-transform"
+            src="/docs/images/products/apple-watch.png"
+            alt="product image"
+          />
+        </a>
+        <div>
+          <div class="flex items-center space-x-3 mb-6">
+            <div class="flex items-center space-x-1 rtl:space-x-reverse">
+              <i class="bx bx-star text-lg text-yellow-500"></i>
+              <i class="bx bx-star text-lg text-yellow-500"></i>
+              <i class="bx bx-star text-lg text-yellow-500"></i>
+              <i class="bx bx-star text-lg text-yellow-500"></i>
+              <i class="bx bx-star text-lg text-yellow-500"></i>
+            </div>
+            <span
+              class="bg-gradient-to-r from-yellow-400 to-orange-400 border-2 border-orange-600 text-white text-base font-bold px-3 py-1.5 rounded-full shadow-lg"
+              ><i class="bx bx-star me-1"></i>4.9/5</span
+            >
+          </div>
+          <a href="#">
+            <h5
+              class="text-2xl text-heading font-bold tracking-tight flex items-center"
+            >
+              <i class="bx bx-leaf me-3 text-3xl text-green-600"></i>Nature
+              Stories
+            </h5>
+          </a>
+          <div class="flex items-center justify-between mt-8 gap-3">
+            <span
+              class="text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-teal-600"
+              >$25</span
+            >
+            <button
+              type="button"
+              class="text-white bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 focus:ring-4 focus:outline-none focus:ring-green-400 font-bold rounded-xl text-base px-5 py-3 text-center transition duration-200 shadow-xl hover:shadow-2xl transform hover:scale-105 flex items-center"
+            >
+              <i class="bx bx-cart-add me-2 text-xl"></i>
+              Add
+            </button>
+            <button
+              type="button"
+              class="text-white bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 focus:ring-4 focus:outline-none focus:ring-blue-400 font-bold rounded-xl text-base px-5 py-3 text-center transition duration-200 shadow-xl hover:shadow-2xl transform hover:scale-105 flex items-center"
+            >
+              <i class="bx bx-eye me-2 text-xl"></i>
+              View
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer
+      class="bg-gradient-to-r from-gray-900 to-gray-800 border-t-4 border-purple-600 mt-16"
+    >
+      <div class="mx-auto w-full max-w-screen-xl">
+        <div class="grid grid-cols-2 gap-8 px-4 py-8 lg:py-12 md:grid-cols-4">
+          <div>
+            <h2
+              class="mb-6 text-xl font-bold text-yellow-300 uppercase flex items-center"
+            >
+              <i class="bx bx-building me-2"></i>Company
+            </h2>
+            <ul class="text-gray-300 font-semibold text-lg">
+              <li class="mb-4">
+                <a
+                  href="#"
+                  class="hover:text-yellow-300 transition-colors flex items-center"
+                  ><i class="bx bx-chevron-right me-2"></i>About</a
+                >
+              </li>
+              <li class="mb-4">
+                <a
+                  href="#"
+                  class="hover:text-yellow-300 transition-colors flex items-center"
+                  ><i class="bx bx-chevron-right me-2"></i>Careers</a
+                >
+              </li>
+              <li class="mb-4">
+                <a
+                  href="#"
+                  class="hover:text-yellow-300 transition-colors flex items-center"
+                  ><i class="bx bx-chevron-right me-2"></i>Brand Center</a
+                >
+              </li>
+              <li class="mb-4">
+                <a
+                  href="#"
+                  class="hover:text-yellow-300 transition-colors flex items-center"
+                  ><i class="bx bx-chevron-right me-2"></i>Blog</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h2
+              class="mb-6 text-xl font-bold text-cyan-300 uppercase flex items-center"
+            >
+              <i class="bx bx-help-circle me-2"></i>Help center
+            </h2>
+            <ul class="text-gray-300 font-semibold text-lg">
+              <li class="mb-4">
+                <a
+                  href="#"
+                  class="hover:text-cyan-300 transition-colors flex items-center"
+                  ><i class="bx bx-chevron-right me-2"></i>Discord Server</a
+                >
+              </li>
+              <li class="mb-4">
+                <a
+                  href="#"
+                  class="hover:text-cyan-300 transition-colors flex items-center"
+                  ><i class="bx bx-chevron-right me-2"></i>Twitter</a
+                >
+              </li>
+              <li class="mb-4">
+                <a
+                  href="#"
+                  class="hover:text-cyan-300 transition-colors flex items-center"
+                  ><i class="bx bx-chevron-right me-2"></i>Facebook</a
+                >
+              </li>
+              <li class="mb-4">
+                <a
+                  href="#"
+                  class="hover:text-cyan-300 transition-colors flex items-center"
+                  ><i class="bx bx-chevron-right me-2"></i>Contact Us</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h2
+              class="mb-6 text-xl font-bold text-pink-300 uppercase flex items-center"
+            >
+              <i class="bx bx-shield me-2"></i>Legal
+            </h2>
+            <ul class="text-gray-300 font-semibold text-lg">
+              <li class="mb-4">
+                <a
+                  href="#"
+                  class="hover:text-pink-300 transition-colors flex items-center"
+                  ><i class="bx bx-chevron-right me-2"></i>Privacy Policy</a
+                >
+              </li>
+              <li class="mb-4">
+                <a
+                  href="#"
+                  class="hover:text-pink-300 transition-colors flex items-center"
+                  ><i class="bx bx-chevron-right me-2"></i>Licensing</a
+                >
+              </li>
+              <li class="mb-4">
+                <a
+                  href="#"
+                  class="hover:text-pink-300 transition-colors flex items-center"
+                  ><i class="bx bx-chevron-right me-2"></i>Terms &amp;
+                  Conditions</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h2
+              class="mb-6 text-xl font-bold text-green-300 uppercase flex items-center"
+            >
+              <i class="bx bx-download me-2"></i>Download
+            </h2>
+            <ul class="text-gray-300 font-semibold text-lg">
+              <li class="mb-4">
+                <a
+                  href="#"
+                  class="hover:text-green-300 transition-colors flex items-center"
+                  ><i class="bx bx-chevron-right me-2"></i>iOS</a
+                >
+              </li>
+              <li class="mb-4">
+                <a
+                  href="#"
+                  class="hover:text-green-300 transition-colors flex items-center"
+                  ><i class="bx bx-chevron-right me-2"></i>Android</a
+                >
+              </li>
+              <li class="mb-4">
+                <a
+                  href="#"
+                  class="hover:text-green-300 transition-colors flex items-center"
+                  ><i class="bx bx-chevron-right me-2"></i>Windows</a
+                >
+              </li>
+              <li class="mb-4">
+                <a
+                  href="#"
+                  class="hover:text-green-300 transition-colors flex items-center"
+                  ><i class="bx bx-chevron-right me-2"></i>MacOS</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div
+          class="px-4 py-8 bg-black/50 md:flex md:items-center md:justify-between border-t border-purple-600"
+        >
+          <span class="text-lg text-gray-300 font-bold sm:text-center"
+            >© 2024 <a href="https://bookworm.com/">BookWorm™</a>. All Rights
+            Reserved.
+          </span>
+          <div
+            class="flex mt-6 sm:justify-center md:mt-0 space-x-4 rtl:space-x-reverse"
+          >
+            <a
+              href="#"
+              class="text-gray-300 hover:text-yellow-300 text-2xl transition-colors"
+            >
+              <i class="bx bxl-facebook-circle"></i>
+              <span class="sr-only">Facebook page</span>
+            </a>
+            <a
+              href="#"
+              class="text-gray-300 hover:text-purple-400 text-2xl transition-colors ms-5"
+            >
+              <i class="bx bxl-discord-alt"></i>
+              <span class="sr-only">Discord community</span>
+            </a>
+            <a
+              href="#"
+              class="text-gray-300 hover:text-blue-400 text-2xl transition-colors ms-5"
+            >
+              <i class="bx bxl-twitter"></i>
+              <span class="sr-only">Twitter page</span>
+            </a>
+            <a
+              href="#"
+              class="text-gray-300 hover:text-gray-200 text-2xl transition-colors ms-5"
+            >
+              <i class="bx bxl-github"></i>
+              <span class="sr-only">GitHub account</span>
+            </a>
+            <a
+              href="#"
+              class="text-gray-300 hover:text-pink-400 text-2xl transition-colors ms-5"
+            >
+              <i class="bx bxl-dribbble"></i>
+              <span class="sr-only">Dribbble account</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Dark Mode Toggle
+      const darkModeBtn = document.getElementById("dark-mode-btn");
+      const htmlElement = document.documentElement;
+      const body = document.body;
+
+      // Check for saved dark mode preference or default to light mode
+      if (localStorage.getItem("darkMode") === "enabled") {
+        enableDarkMode();
+      }
+
+      darkModeBtn.addEventListener("click", () => {
+        if (htmlElement.classList.contains("dark")) {
+          disableDarkMode();
+        } else {
+          enableDarkMode();
+        }
+      });
+
+      function enableDarkMode() {
+        htmlElement.classList.add("dark");
+        body.classList.add("dark-mode");
+        darkModeBtn.innerHTML = '<i class="bx bx-sun"></i>';
+        localStorage.setItem("darkMode", "enabled");
+      }
+
+      function disableDarkMode() {
+        htmlElement.classList.remove("dark");
+        body.classList.remove("dark-mode");
+        darkModeBtn.innerHTML = '<i class="bx bx-moon"></i>';
+        localStorage.setItem("darkMode", "disabled");
+      }
+
+      // Shopping Cart Functionality
+      const cartBtn = document.getElementById("cart-btn");
+      const cartDropdown = document.getElementById("cart-dropdown");
+      const cartItems = document.getElementById("cart-items");
+      const cartBadge = document.getElementById("cart-badge");
+      const cartTotal = document.getElementById("cart-total");
+
+      let cart = JSON.parse(localStorage.getItem("bookCart")) || [];
+
+      cartBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        cartDropdown.classList.toggle("hidden");
+      });
+
+      // Close cart when clicking outside
+      document.addEventListener("click", (e) => {
+        if (!cartBtn.contains(e.target) && !cartDropdown.contains(e.target)) {
+          cartDropdown.classList.add("hidden");
+        }
+      });
+
+      // Add to cart from product buttons
+      document.querySelectorAll(".add-to-cart-btn").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const productCard = btn.closest("[data-product]");
+          if (productCard) {
+            const productName = productCard.dataset.product;
+            const productPrice = parseFloat(productCard.dataset.price);
+
+            const existingItem = cart.find((item) => item.name === productName);
+            if (existingItem) {
+              existingItem.quantity += 1;
+            } else {
+              cart.push({
+                name: productName,
+                price: productPrice,
+                quantity: 1,
+              });
+            }
+
+            localStorage.setItem("bookCart", JSON.stringify(cart));
+            updateCart();
+          }
+        });
+      });
+
+      function updateCart() {
+        cartBadge.textContent = cart.reduce(
+          (sum, item) => sum + item.quantity,
+          0,
+        );
+
+        if (cart.length === 0) {
+          cartItems.innerHTML =
+            '<p class="text-gray-500 dark:text-gray-400 text-center py-6">Your cart is empty</p>';
+          cartTotal.textContent = "0";
+        } else {
+          cartItems.innerHTML = cart
+            .map(
+              (item, index) => `
+        <div class="flex items-center justify-between p-3 bg-gray-100 dark:bg-gray-800 rounded-lg">
+          <div class="flex-1">
+            <p class="font-semibold text-gray-900 dark:text-white">${item.name}</p>
+            <p class="text-sm text-gray-600 dark:text-gray-400">$${item.price.toFixed(2)}</p>
+          </div>
+          <div class="flex items-center space-x-2">
+            <button class="bg-red-500 hover:bg-red-600 text-white px-2 py-1 rounded" onclick="removeFromCart(${index})">-</button>
+            <span class="font-bold text-gray-900 dark:text-white w-6 text-center">${item.quantity}</span>
+            <button class="bg-green-500 hover:bg-green-600 text-white px-2 py-1 rounded" onclick="addMoreToCart(${index})">+</button>
+          </div>
+        </div>
+      `,
+            )
+            .join("");
+
+          const total = cart.reduce(
+            (sum, item) => sum + item.price * item.quantity,
+            0,
+          );
+          cartTotal.textContent = total.toFixed(2);
+        }
+      }
+
+      window.removeFromCart = function (index) {
+        cart[index].quantity -= 1;
+        if (cart[index].quantity <= 0) {
+          cart.splice(index, 1);
+        }
+        localStorage.setItem("bookCart", JSON.stringify(cart));
+        updateCart();
+      };
+
+      window.addMoreToCart = function (index) {
+        cart[index].quantity += 1;
+        localStorage.setItem("bookCart", JSON.stringify(cart));
+        updateCart();
+      };
+
+      // Initialize cart display
+      updateCart();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chi tiết truyện - Nghe Truyện Xịn</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <!-- Swiper CSS for Carousel -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <style>
+        /* Custom styles for audio player */
+        .audio-progress {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 100%;
+            height: 8px;
+            background: #e5e7eb;
+            border-radius: 4px;
+            outline: none;
+        }
+
+        .audio-progress::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            background: #10b981;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .audio-progress::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            background: #10b981;
+            border-radius: 50%;
+            cursor: pointer;
+            border: none;
+        }
+
+        /* Fade-in animation */
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100 text-gray-900 transition-colors duration-300">
+
+    <!-- Header -->
+    <header
+        class="bg-gradient-to-r from-blue-600 to-purple-600 shadow-lg fixed w-full top-0 z-50 transition-all duration-300">
+        <div class="container mx-auto flex justify-between items-center p-4">
+            <h1 class="text-2xl font-bold flex items-center gap-2 text-white">
+                <i class='bx bx-book-reader text-3xl'></i> Nghe Truyện Xịn
+            </h1>
+            <nav class="hidden md:flex items-center gap-6 text-white">
+                <a href="#" class="hover:text-yellow-300 transition-colors duration-200">Trang chủ</a>
+                <a href="#" class="hover:text-yellow-300 transition-colors duration-200">Thể loại</a>
+                <a href="#" class="hover:text-yellow-300 transition-colors duration-200">Audio</a>
+                <a href="#" class="hover:text-yellow-300 transition-colors duration-200">Cộng đồng</a>
+            </nav>
+            <button id="darkModeToggle"
+                class="p-2 rounded-full hover:bg-white/20 transition-all duration-200 text-white">
+                <i class='bx bx-moon text-xl'></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Breadcrumb -->
+    <nav class="bg-white shadow-sm py-3 mt-20">
+        <div class="container mx-auto">
+            <ol class="flex items-center gap-2 text-sm">
+                <li><a href="#" class="text-blue-600 hover:underline">Trang chủ</a></li>
+                <li><i class='bx bx-chevron-right text-gray-400'></i></li>
+                <li><a href="#" class="text-blue-600 hover:underline">Ngôn tình</a></li>
+                <li><i class='bx bx-chevron-right text-gray-400'></i></li>
+                <li class="text-gray-700">Tên Truyện</li>
+            </ol>
+        </div>
+    </nav>
+
+    <!-- Nội dung chính -->
+    <main class="container mx-auto mt-8 mb-12 fade-in">
+
+        <!-- Thông tin truyện -->
+        <section class="bg-white shadow-xl rounded-lg p-8 mb-8 hover:shadow-2xl transition-shadow duration-300">
+            <div class="flex flex-col md:flex-row gap-8">
+                <div class="relative">
+                    <img src="https://source.unsplash.com/300x400/?book,cover" alt="Bìa truyện"
+                        class="rounded-lg shadow-lg w-full max-w-sm">
+                    <div
+                        class="absolute inset-0 bg-black/20 rounded-lg opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <button
+                            class="bg-yellow-500 text-black px-6 py-2 rounded-full hover:bg-yellow-600 transition-all duration-200">
+                            <i class='bx bx-play-circle mr-2'></i> Xem trước
+                        </button>
+                    </div>
+                </div>
+                <div class="flex-1">
+                    <h2 class="text-4xl font-bold mb-4 text-gray-800">Tên Truyện</h2>
+                    <p class="text-gray-600 mb-2 text-lg">Tác giả: <span class="font-semibold text-blue-600">Nguyễn Văn
+                            A</span></p>
+                    <p class="text-gray-600 mb-2 text-lg">Thể loại: <span class="font-semibold text-green-600">Ngôn
+                            tình</span></p>
+                    <p class="text-gray-700 mb-6 text-lg leading-relaxed">Mô tả ngắn: Đây là phần giới thiệu nội dung
+                        truyện, giúp người đọc nắm sơ lược câu chuyện với những tình huống kịch tính, cảm xúc sâu sắc...
+                    </p>
+
+                    <!-- Rating -->
+                    <div class="flex items-center gap-1 mb-6">
+                        <i class='bx bxs-star text-yellow-500 text-xl'></i>
+                        <i class='bx bxs-star text-yellow-500 text-xl'></i>
+                        <i class='bx bxs-star text-yellow-500 text-xl'></i>
+                        <i class='bx bxs-star text-yellow-500 text-xl'></i>
+                        <i class='bx bx-star text-yellow-500 text-xl'></i>
+                        <span class="ml-2 text-gray-600 text-lg">(4.0/5 - 120 đánh giá)</span>
+                    </div>
+
+                    <!-- Action buttons -->
+                    <div class="flex gap-4 flex-wrap">
+                        <button
+                            class="bg-blue-600 text-white px-6 py-3 rounded-full hover:bg-blue-700 hover:scale-105 transition-all duration-200 flex items-center gap-2 shadow-lg">
+                            <i class='bx bx-book-open'></i> Đọc
+                        </button>
+                        <button
+                            class="bg-green-600 text-white px-6 py-3 rounded-full hover:bg-green-700 hover:scale-105 transition-all duration-200 flex items-center gap-2 shadow-lg">
+                            <i class='bx bx-headphone'></i> Nghe
+                        </button>
+                        <button
+                            class="bg-purple-600 text-white px-6 py-3 rounded-full hover:bg-purple-700 hover:scale-105 transition-all duration-200 flex items-center gap-2 shadow-lg">
+                            <i class='bx bx-translate'></i> Dịch
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Danh sách chương -->
+        <section class="bg-white shadow-xl rounded-lg p-8 mb-8 fade-in">
+            <h3 class="text-3xl font-semibold mb-6 flex items-center gap-2 text-gray-800">
+                <i class='bx bx-list-ul text-blue-600'></i> Danh sách chương
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div
+                    class="bg-gray-50 rounded-lg p-4 hover:bg-gray-100 hover:shadow-md hover:scale-105 transition-all duration-300 cursor-pointer">
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <span class="font-semibold text-lg">Chương 1: Khởi đầu</span>
+                            <p class="text-sm text-gray-600">Cập nhật: 01/10/2023</p>
+                        </div>
+                        <div class="flex gap-2">
+                            <button
+                                class="text-blue-600 hover:text-blue-800 transition-colors duration-200 flex items-center gap-1">
+                                <i class='bx bx-book-open'></i> Đọc
+                            </button>
+                            <button
+                                class="text-green-600 hover:text-green-800 transition-colors duration-200 flex items-center gap-1">
+                                <i class='bx bx-headphone'></i> Nghe
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="bg-gray-50 rounded-lg p-4 hover:bg-gray-100 hover:shadow-md hover:scale-105 transition-all duration-300 cursor-pointer">
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <span class="font-semibold text-lg">Chương 2: Bí mật</span>
+                            <p class="text-sm text-gray-600">Cập nhật: 05/10/2023</p>
+                        </div>
+                        <div class="flex gap-2">
+                            <button
+                                class="text-blue-600 hover:text-blue-800 transition-colors duration-200 flex items-center gap-1">
+                                <i class='bx bx-book-open'></i> Đọc
+                            </button>
+                            <button
+                                class="text-green-600 hover:text-green-800 transition-colors duration-200 flex items-center gap-1">
+                                <i class='bx bx-headphone'></i> Nghe
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Thêm chương giả -->
+                <div
+                    class="bg-gray-50 rounded-lg p-4 hover:bg-gray-100 hover:shadow-md hover:scale-105 transition-all duration-300 cursor-pointer">
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <span class="font-semibold text-lg">Chương 3: Phát triển</span>
+                            <p class="text-sm text-gray-600">Cập nhật: 10/10/2023</p>
+                        </div>
+                        <div class="flex gap-2">
+                            <button
+                                class="text-blue-600 hover:text-blue-800 transition-colors duration-200 flex items-center gap-1">
+                                <i class='bx bx-book-open'></i> Đọc
+                            </button>
+                            <button
+                                class="text-green-600 hover:text-green-800 transition-colors duration-200 flex items-center gap-1">
+                                <i class='bx bx-headphone'></i> Nghe
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="bg-gray-50 rounded-lg p-4 hover:bg-gray-100 hover:shadow-md hover:scale-105 transition-all duration-300 cursor-pointer">
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <span class="font-semibold text-lg">Chương 4: Cao trào</span>
+                            <p class="text-sm text-gray-600">Cập nhật: 15/10/2023</p>
+                        </div>
+                        <div class="flex gap-2">
+                            <button
+                                class="text-blue-600 hover:text-blue-800 transition-colors duration-200 flex items-center gap-1">
+                                <i class='bx bx-book-open'></i> Đọc
+                            </button>
+                            <button
+                                class="text-green-600 hover:text-green-800 transition-colors duration-200 flex items-center gap-1">
+                                <i class='bx bx-headphone'></i> Nghe
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Audio Player -->
+        <section class="bg-white shadow-xl rounded-lg p-8 mb-8 fade-in">
+            <h3 class="text-3xl font-semibold mb-6 flex items-center gap-2 text-gray-800">
+                <i class='bx bx-headphone text-green-600'></i> Audio Player
+            </h3>
+            <div class="flex items-center gap-4 mb-4">
+                <button
+                    class="p-4 bg-green-600 text-white rounded-full hover:bg-green-700 hover:scale-110 transition-all duration-200 shadow-lg">
+                    <i class='bx bx-play text-2xl'></i>
+                </button>
+                <button
+                    class="p-4 bg-gray-200 rounded-full hover:bg-gray-300 hover:scale-110 transition-all duration-200">
+                    <i class='bx bx-pause text-2xl'></i>
+                </button>
+                <input type="range" min="0" max="100" value="30" class="audio-progress flex-1">
+            </div>
+            <div class="flex gap-4 flex-wrap">
+                <select class="px-4 py-2 border rounded-lg hover:bg-gray-100 transition-colors duration-200">
+                    <option>Giọng Nam</option>
+                    <option>Giọng Nữ</option>
+                </select>
+                <select class="px-4 py-2 border rounded-lg hover:bg-gray-100 transition-colors duration-200">
+                    <option>Tốc độ x1.0</option>
+                    <option>Tốc độ x1.5</option>
+                    <option>Tốc độ x2.0</option>
+                </select>
+            </div>
+        </section>
+
+        <!-- Bình luận -->
+        <section class="bg-white shadow-xl rounded-lg p-8 fade-in">
+            <h3 class="text-3xl font-semibold mb-6 flex items-center gap-2 text-gray-800">
+                <i class='bx bx-chat text-blue-600'></i> Bình luận
+            </h3>
+            <form id="commentForm" class="mb-6">
+                <textarea id="commentText" placeholder="Viết cảm nghĩ của bạn..."
+                    class="w-full border border-gray-300 rounded-lg p-4 mb-4 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-200"
+                    rows="4"></textarea>
+                <button type="submit"
+                    class="bg-blue-600 text-white px-6 py-3 rounded-full hover:bg-blue-700 hover:scale-105 transition-all duration-200 shadow-lg">Gửi</button>
+            </form>
+
+            <div class="space-y-6">
+                <div class="bg-gray-50 rounded-lg p-4 hover:shadow-md transition-shadow duration-300">
+                    <div class="flex items-center gap-4 mb-2">
+                        <img src="https://via.placeholder.com/40x40" alt="Avatar" class="rounded-full">
+                        <p class="font-semibold text-lg">Phú Ngô</p>
+                    </div>
+                    <p class="text-gray-700">Truyện rất hay, giọng đọc cuốn hút!</p>
+                </div>
+                <div class="bg-gray-50 rounded-lg p-4 hover:shadow-md transition-shadow duration-300">
+                    <div class="flex items-center gap-4 mb-2">
+                        <img src="https://via.placeholder.com/40x40" alt="Avatar" class="rounded-full">
+                        <p class="font-semibold text-lg">Mai Anh</p>
+                    </div>
+                    <p class="text-gray-700">Mong tác giả ra chương mới nhanh hơn.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Carousel Truyện liên quan -->
+        <section class="mt-12 fade-in">
+            <h3 class="text-3xl font-semibold mb-8 text-center text-gray-800">Truyện liên quan</h3>
+            <div class="swiper relatedSwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div
+                            class="bg-white shadow-lg rounded-lg overflow-hidden hover:shadow-2xl hover:scale-105 transition-all duration-300 max-w-sm mx-auto">
+                            <img src="https://source.unsplash.com/400x300/?romance,book" alt="Truyện liên quan"
+                                class="w-full h-48 object-cover">
+                            <div class="p-6">
+                                <h4 class="font-bold text-xl mb-2">Truyện Liên Quan 1</h4>
+                                <p class="text-sm text-gray-600 mb-4">Mô tả ngắn gọn về truyện liên quan...</p>
+                                <div class="flex justify-between items-center">
+                                    <button
+                                        class="bg-blue-600 text-white px-4 py-2 rounded-full hover:bg-blue-700 transition-all duration-200 flex items-center gap-1">
+                                        <i class='bx bx-book-open'></i> Đọc
+                                    </button>
+                                    <button
+                                        class="bg-green-600 text-white px-4 py-2 rounded-full hover:bg-green-700 transition-all duration-200 flex items-center gap-1">
+                                        <i class='bx bx-headphone'></i> Nghe
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div
+                            class="bg-white shadow-lg rounded-lg overflow-hidden hover:shadow-2xl hover:scale-105 transition-all duration-300 max-w-sm mx-auto">
+                            <img src="https://source.unsplash.com/400x300/?fantasy,novel" alt="Truyện liên quan"
+                                class="w-full h-48 object-cover">
+                            <div class="p-6">
+                                <h4 class="font-bold text-xl mb-2">Truyện Liên Quan 2</h4>
+                                <p class="text-sm text-gray-600 mb-4">Mô tả ngắn gọn về truyện liên quan...</p>
+                                <div class="flex justify-between items-center">
+                                    <button
+                                        class="bg-blue-600 text-white px-4 py-2 rounded-full hover:bg-blue-700 transition-all duration-200 flex items-center gap-1">
+                                        <i class='bx bx-book-open'></i> Đọc
+                                    </button>
+                                    <button
+                                        class="bg-green-600 text-white px-4 py-2 rounded-full hover:bg-green-700 transition-all duration-200 flex items-center gap-1">
+                                        <i class='bx bx-headphone'></i> Nghe
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div
+                            class="bg-white shadow-lg rounded-lg overflow-hidden hover:shadow-2xl hover:scale-105 transition-all duration-300 max-w-sm mx-auto">
+                            <img src="https://source.unsplash.com/400x300/?thriller,story" alt="Truyện liên quan"
+                                class="w-full h-48 object-cover">
+                            <div class="p-6">
+                                <h4 class="font-bold text-xl mb-2">Truyện Liên Quan 3</h4>
+                                <p class="text-sm text-gray-600 mb-4">Mô tả ngắn gọn về truyện liên quan...</p>
+                                <div class="flex justify-between items-center">
+                                    <button
+                                        class="bg-blue-600 text-white px-4 py-2 rounded-full hover:bg-blue-700 transition-all duration-200 flex items-center gap-1">
+                                        <i class='bx bx-book-open'></i> Đọc
+                                    </button>
+                                    <button
+                                        class="bg-green-600 text-white px-4 py-2 rounded-full hover:bg-green-700 transition-all duration-200 flex items-center gap-1">
+                                        <i class='bx bx-head
+phone'></i> Nghe
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Thêm nút điều hướng nếu cần -->
+                <div class="swiper-button-next text-gray-700 hover:text-gray-900"></div>
+                <div class="swiper-button-prev text-gray-700 hover:text-gray-900"></div>
+            </div>
+
+
+        </section>
+    </main>
+    <!-- Swiper JS for Carousel -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        // Khởi tạo Swiper cho phần Truyện liên quan
+        const relatedSwiper = new Swiper('.relatedSwiper', {
+            slidesPerView: 1,
+            spaceBetween: 20,
+            loop: true,
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            breakpoints: {
+                640: {
+                    slidesPerView: 2,
+                },
+                1024: {
+                    slidesPerView: 3,
+                },
+            },
+        });
+
+        // Dark mode toggle
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        darkModeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('bg-gray-900');
+            document.body.classList.toggle('text-gray-100');
+        });
+
+        // Handle comment form submission
+        const commentForm = document.getElementById('commentForm');
+        commentForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const commentText = document.getElementById('commentText').value;
+            if (commentText.trim() !== '') {
+                alert('Cảm ơn bạn đã gửi bình luận!');
+                commentForm.reset();
+            }
+        });
+    </script>
+</body>
+
+</html>
